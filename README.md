@@ -3,7 +3,7 @@
 
 This lysine lactylation sites prediction tool developed by a team from the Chinese University of Hong Kong (Shenzhen)
 
-![The workflow of this study](https://github.com/GGCL7/AIP_MDL/blob/main/workflow.jpg)
+![The workflow of this study](https://github.com/GGCL7/DeepKlapred/blob/main/workflow.png))
 
 
 # Dataset for this study
