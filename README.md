@@ -9,4 +9,4 @@ This lysine lactylation sites prediction tool developed by a team from the Chine
 # Dataset for this study
 We provided our dataset and you can find them [Dataset](https://github.com/GGCL7/DeepKlapred/tree/main/Data)
 # Source code
-[code](https://github.com/GGCL7/DeepKlapred/tree/main/code)
+We provide the source code and you can find them [code](https://github.com/GGCL7/DeepKlapred/tree/main/code)
