@@ -47,12 +47,12 @@ def evaluate_model(model, test_loader, criterion, device):
 
 
 
-train_sequences, train_labels = load_data_from_txt('/Users/ggcl7/Desktop/硕士蛋白质/protein lysine lactylation site prediction/train.txt')
-test_sequences, test_labels = load_data_from_txt('/Users/ggcl7/Desktop/硕士蛋白质/protein lysine lactylation site prediction/test.txt')
+train_sequences, train_labels = load_data_from_txt('train.txt')
+test_sequences, test_labels = load_data_from_txt('test.txt')
 
 
-sequence_feature_train = load_features_from_txt('/Users/ggcl7/Desktop/硕士蛋白质/protein lysine lactylation site prediction/train_feature.txt')
-sequence_feature_test = load_features_from_txt('/Users/ggcl7/Desktop/硕士蛋白质/protein lysine lactylation site prediction/test_feature.txt')
+sequence_feature_train = load_features_from_txt('train_feature.txt')
+sequence_feature_test = load_features_from_txt('test_feature.txt')
 
 dataset_train = MyDataSet(train_sequences, sequence_feature_train, train_labels)
 dataset_test = MyDataSet(test_sequences, sequence_feature_test, test_labels)
@@ -84,8 +84,6 @@ for epoch in range(n_epochs):
     train_loss = train_model(model, train_loader, criterion, optimizer, device)
     test_loss, test_accuracy = evaluate_model(model, test_loader, criterion, device)
     print(f'Epoch {epoch+1}, Train Loss: {train_loss:.4f}, Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}')
-
-    # 保存准确度最高的模型
     if test_accuracy > best_accuracy:
         best_accuracy = test_accuracy
         torch.save(model.state_dict(), best_model_path)
