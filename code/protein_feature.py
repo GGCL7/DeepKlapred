@@ -8,7 +8,6 @@ import math
 
 
 def DDE(fastas, **kw):
-    # DDE特征提取
     AA = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
     myCodons = {'A': 4, 'C': 2, 'D': 2, 'E': 2, 'F': 2, 'G': 4, 'H': 2, 'I': 3, 'K': 2, 'L': 6, 'M': 1, 'N': 2, 'P': 4,
                 'Q': 2, 'R': 6, 'S': 6, 'T': 4, 'V': 4, 'W': 1, 'Y': 2}
@@ -35,7 +34,6 @@ def DDE(fastas, **kw):
 
 
 def feature_DDE(file_path):
-    # 调用DDE函数提取特征
     fasta_list = open(file_path, 'r', encoding='utf-8').readlines()
     aa_feature_list = []
     for flag in range(0, len(fasta_list), 2):
@@ -49,7 +47,6 @@ def feature_DDE(file_path):
 
 
 def generate_features(input_txt_path):
-    # 提取所有特征
     descriptors = ["QSOrder", "CTDC", "CTDT", "CTDD", "DistancePair"]
     features = []
 
@@ -62,14 +59,11 @@ def generate_features(input_txt_path):
 
     dde = feature_DDE(input_txt_path).reset_index(drop=True)
     features.append(dde)
-
-    # 合并所有特征
     result = pd.concat(features, axis=1)
     return result
 
 
 def main(input_txt_path, output_txt_path):
-    # 主函数，生成特征并保存
     test_df = generate_features(input_txt_path)
     x2 = torch.tensor(test_df.values, dtype=torch.float32)
     print(f"Feature shape: {x2.shape}")
@@ -77,7 +71,6 @@ def main(input_txt_path, output_txt_path):
 
 
 
-# 示例使用
-inputfile = '/Users/ggcl7/Desktop/硕士蛋白质/protein lysine lactylation site prediction/test.txt'
-outputfile = '/Users/ggcl7/Desktop/硕士蛋白质/protein lysine lactylation site prediction/test_feature.txt'
+inputfile = 'train.txt'
+outputfile = 'train_feature.txt'
 dataset = main(inputfile, outputfile)
